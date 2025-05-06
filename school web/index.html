@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sullamussalam Arabic College</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="IMG/LOGO.jpeg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #1a202c;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(90deg, #1a4971, #2b6cb0);
+      color: #fff;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 70px;
+      margin-right: 1rem;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #ffd700;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .hero {
+      height: 90vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.6);
+    }
+
+    .hero-content {
+      background: rgba(26, 73, 113, 0.75);
+      padding: 2rem 3rem;
+      border-radius: 15px;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .about, .academics, .faculty, .gallery, .admissions, .contact {
+      background: #fff;
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    h2 {
+      color: #1a4971;
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background: #ffd700;
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+    }
+
+    .core-values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .core-values div {
+      background: #edf2f7;
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .core-values div:hover {
+      transform: translateY(-10px);
+    }
+
+    .academics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .academics-card {
+      background: #f7fafc;
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: box-shadow 0.3s;
+    }
+
+    .academics-card:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .faculty-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: #f7fafc;
+      border-radius: 15px;
+      transition: transform 0.3s;
+    }
+
+    .faculty-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .faculty-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #ffd700;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin-top: 2rem;
+    }
+
+    .contact input, .contact textarea {
+      padding: 0.8rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .contact input:focus, .contact textarea:focus {
+      border-color: #2b6cb0;
+      outline: none;
+    }
+
+    .contact button {
+      padding: 0.8rem;
+      background: #1a4971;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .contact button:hover {
+      background: #2b6cb0;
+    }
+
+    footer {
+      background: #1a4971;
+      color: #fff;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(26, 73, 113, 0.3));
+      z-index: -1;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1300px;
+      margin: 0 auto;
+      gap: 2rem;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+
+    .footer-section p, .footer-section a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .footer-section a:hover {
+      color: #ffd700;
+    }
+
+    .social-icons {
+      margin: 1rem 0;
+    }
+
+    .social-icons a {
+      color: #fff;
+      margin: 0 0.8rem;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    #three-footer-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.15;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #1a4971;
+        padding: 1rem;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        margin: 0.5rem 0;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .core-values, .academics-grid, .faculty-grid, .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .contact iframe {
+        width: 100%;
+        height: 300px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="IMG/LOGO.jpeg" alt="SSAC Logo">
+      <h1>Sullamussalam Arabic College</h1>
+    </div>
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#academics">Academics</a>
+      <a href="#faculty">Faculty</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <canvas id="three-canvas"></canvas>
+    <video autoplay muted loop>
+      <source src="https://cdn.pixabay.com/video/2023/06/25/169014-838861374_tiny.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1>Shaping Minds, Building Futures</h1>
+      <p>Discover a legacy of academic excellence at Sullamussalam Arabic College, Arecode, since 1944.</p>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>Since its inception in 1944, Sullamussalam Arabic College has been a beacon of academic excellence in Malabar. With a rich legacy spanning over eight decades, the college is renowned for its value-based education, state-of-the-art infrastructure, and commitment to holistic development. Founded by visionaries like N.V. Abdussalam Moulavi, SSAC continues to empower students from marginalized communities, fostering knowledge, character, and societal impact.</p>
+    <div class="core-values">
+      <div><h3>Excellence</h3><p>Striving for academic and personal growth.</p></div>
+      <div><h3>Integrity</h3><p>Upholding ethical values in all endeavors.</p></div>
+      <div><h3>Inclusivity</h3><p>Embracing diversity and equality.</p></div>
+      <div><h3>Innovation</h3><p>Encouraging creative thinking and progress.</p></div>
+    </div>
+  </section>
+
+  <section class="academics" id="academics">
+    <h2>Academics</h2>
+    <p>Our programs blend traditional and modern learning methodologies to foster intellectual growth.</p>
+    <div class="academics-grid">
+      <div class="academics-card">
+        <h3>Arabic Studies</h3>
+        <p>In-depth courses in Arabic language, literature, and culture.</p>
+      </div>
+      <div class="academics-card">
+        <h3>Islamic Studies</h3>
+        <p>Comprehensive programs in Islamic theology and history.</p>
+      </div>
+      <div class="academics-card">
+        <h3>Humanities</h3>
+        <p>Interdisciplinary courses fostering critical thinking.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faculty" id="faculty">
+    <h2>Our Faculty</h2>
+    <div class="faculty-grid">
+      <div class="faculty-card">
+        <img src="IMG/Member_HarrisBinSalimP_Profile13.jpeg" alt="Mr. Harris Bin Salim P">
+        <h3>Mr. Harris Bin Salim P</h3>
+        <p>Principal</p>
+        <p>A warm welcome to Sullamussalam! Our college has been a cornerstone of value-based education for 80 years, nurturing students into compassionate and knowledgeable individuals.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      <img src="IMG/ARABIC.jpg" alt="Campus">
+      <img src="IMG/TEST ALBUM IN ARACBIC.jpg" alt="Event">
+    </div>
+  </section>
+
+  <section class="admissions" id="admissions">
+    <h2>Admissions</h2>
+    <p>Join our vibrant community through a streamlined admission process.</p>
+    <ul>
+      <li>Complete the online application form.</li>
+      <li>Submit academic transcripts and ID documents.</li>
+      <li>Participate in an interview or entrance exam.</li>
+      <li>Receive your admission decision within 10 days.</li>
+    </ul>
+    <p>Apply now at <a href="#">admissions.ssacarecode.org</a>.</p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Arecode, Malabar, Kerala, India</p>
+    <p>Phone: +91 483 2960236 | Email: sullamareacode@gmail.com</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31306.579851822014!2d76.04816600000001!3d11.237671!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba6470780a923cb%3A0x7a247b1da2d9ee42!2sSullamussalam%20Arabic%20College!5e0!3m2!1sen!2sin!4v1746537407075!5m2!1sen!2sin" width="100%" height="450" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="6" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <canvas id="three-footer-canvas"></canvas>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About SSAC</h3>
+        <p>Sullamussalam Arabic College, established in 1944, is dedicated to fostering academic excellence and holistic development in Malabar, Kerala.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#academics">Academics</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact Info</h3>
+        <p>Arecode, Malabar, Kerala, India</p>
+        <p>Phone: +91 483 2960236</p>
+        <p>Email: sullamareacode@gmail.com</p>
+      </div>
+      <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Sullamussalam Arabic College. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  <script>
+    // Three.js Animation for Hero
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const geometry = new THREE.TorusKnotGeometry(12, 3.5, 100, 16);
+    const material = new THREE.MeshBasicMaterial({ color: 0x2b6cb0, wireframe: true });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+
+    camera.position.z = 35;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      torusKnot.rotation.x += 0.008;
+      torusKnot.rotation.y += 0.008;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Three.js Animation for Footer
+    const footerScene = new THREE.Scene();
+    const footerCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const footerRenderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-footer-canvas'), alpha: true });
+    footerRenderer.setSize(window.innerWidth, window.innerHeight);
+
+    const footerGeometry = new THREE.SphereGeometry(10, 32, 16);
+    const footerMaterial = new THREE.MeshBasicMaterial({ color: 0xFFD700, wireframe: true });
+    const footerSphere = new THREE.Mesh(footerGeometry, footerMaterial);
+    footerScene.add(footerSphere);
+
+    footerCamera.position.z = 25;
+
+    function footerAnimate() {
+      requestAnimationFrame(footerAnimate);
+      footerSphere.rotation.x += 0.005;
+      footerSphere.rotation.y += 0.005;
+      footerRenderer.render(footerScene, footerCamera);
+    }
+    footerAnimate();
+
+    // Window Resize Handler
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      footerRenderer.setSize(window.innerWidth, window.innerHeight);
+      footerCamera.aspect = window.innerWidth / window.innerHeight;
+      footerCamera.updateProjectionMatrix();
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
